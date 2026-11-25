@@ -51,6 +51,9 @@ function validateEntry(line: string): void {
   if (!/\p{L}/u.test(line)) {
     throw new Error("entry must contain at least one letter");
   }
+  if (line !== line.trim()) {
+    throw new Error("entry must not have leading or trailing whitespace");
+  }
   if (line.includes("\n") || line.includes("\r")) {
     throw new Error("entry must be a single line");
   }
